@@ -88,9 +88,9 @@
                         <div class="avatar avatar-sm">
                            {% if request.user.userprofile.image %}
                      <img src="{{ user.userprofile.image.url }}" alt="User Image" class="avatar-img rounded-circle">
-                 {% else %}
-                     <img src="{% static 'assets/img/profiles/avatar-06.jpg' %}" style="height: 50px;" alt="Default User Image" class="avatar-img rounded-circle">
-                 {% endif %}
+                     {% else %}
+                           <img src="{% static 'assets/img/profiles/avatar-06.jpg' %}" style="height: 50px;" alt="Default User Image" class="avatar-img rounded-circle">
+                     {% endif %}
                            
                         </div>
                         <div class="user-text">
@@ -98,8 +98,8 @@
                            <p class="text-muted mb-0">Administrator</p>
                         </div>
                      </div>
-                     <a class="dropdown-item" href="profile.html">My Profile</a>
-                     <a class="dropdown-item" href="inbox.html">Inbox</a>
+                     <a class="dropdown-item" href="profile">My Profile</a>
+                     <a class="dropdown-item" href="inbox">Inbox</a>
                      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                   </div>
                </li>
@@ -124,9 +124,9 @@
                         <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                         <ul>
                            <li><a href="{% url 'student_list' %}">Student List</a></li>
-                           <li><a href="student-details.html">Student View</a></li>
+                           <li><a href="{% url 'student_list' %}">Student View</a></li>
                            <li><a href="{% url 'add_student' %}">Student Add</a></li>
-                           <li><a href="edit-student.html">Student Edit</a></li>
+                           <li><a href="{% url 'student_list' %}">Student Edit</a></li>
                         </ul>
                      </li>
                      <li class="submenu">
