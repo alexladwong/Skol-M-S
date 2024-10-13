@@ -13,16 +13,17 @@
       <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
       <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css' %}">
       <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
    </head>
    <body>
       <div class="main-wrapper">
          <div class="header">
             <div class="header-left">
-               <a href="index.html" class="logo">
-               <img src="assets/img/logo.png" alt="Logo">
+               <a href="/" class="logo">
+               <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
                </a>
-               <a href="index.html" class="logo logo-small">
-               <img src="assets/img/logo-small.png" alt="Logo" width="30" height="30">
+               <a href="/" class="logo logo-small">
+               <img src="{% static 'assets/img/logo-small.png' %}" alt="Logo" width="30" height="30">
                </a>
             </div>
             <a href="javascript:void(0);" id="toggle_btn">
@@ -41,7 +42,7 @@
                <li class="nav-item dropdown noti-dropdown">
                   <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                    {% if unread_notification_count > 0 %}
-                  <i class="far fa-bell"></i> <span class="badge badge-pill">{{unread_notification_count}}</span>
+                   <i class="fa fa-bell-slash" aria-hidden="true"></i> <span class="badge badge-pill">{{unread_notification_count}}</span>
                   {% endif %}
                   </a>
                   <div class="dropdown-menu notifications">
@@ -56,7 +57,7 @@
                               <a href="#">
                                  <div class="media">
                                     <span class="avatar avatar-sm">
-                                    <img class="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg">
+                                    <img class="avatar-img rounded-circle" alt="User Image" src="{% static 'assets/img/profiles/avatar-02.jpg' %}">
                                     </span>
                                     <div class="media-body">
                                        <p class="noti-details"><span class="noti-title">{{ notification.user.username }}</span> {{ notification.message }} <span class="noti-title">your estimate</span></p>
@@ -76,15 +77,24 @@
                </li>
                <li class="nav-item dropdown has-arrow">
                   <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                  <span class="user-img"><img class="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+                  {% if request.user.userprofile.image %}
+                     <img src="{{ user.userprofile.image.url }}" alt="User Image" class="avatar-img rounded-circle">
+                 {% else %}
+                     <img src="{% static 'assets/img/profiles/avatar-06.jpg' %}" style="height: 50px;" alt="Default User Image" class="avatar-img rounded-circle">
+                 {% endif %}
                   </a>
                   <div class="dropdown-menu">
                      <div class="user-header">
                         <div class="avatar avatar-sm">
-                           <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+                           {% if request.user.userprofile.image %}
+                     <img src="{{ user.userprofile.image.url }}" alt="User Image" class="avatar-img rounded-circle">
+                 {% else %}
+                     <img src="{% static 'assets/img/profiles/avatar-06.jpg' %}" style="height: 50px;" alt="Default User Image" class="avatar-img rounded-circle">
+                 {% endif %}
+                           
                         </div>
                         <div class="user-text">
-                           <h6>{{user.username}}</h6>
+                           <h6>{{request.user.username}}</h6>
                            <p class="text-muted mb-0">Administrator</p>
                         </div>
                      </div>

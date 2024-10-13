@@ -105,10 +105,6 @@ docker-compose up --build
 ```
 This will build the Docker image and run the Django application and the PostgreSQL service.
 
-## **Video Links**
-Watch the videos to learn in proper way.
-https://youtu.be/mM6vMMLYJHY
-
 
 ## **Testing**
 You can run the unit tests with Django's built-in testing framework:

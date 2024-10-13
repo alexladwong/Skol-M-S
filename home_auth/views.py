@@ -36,8 +36,8 @@ def signup_view(request):
         user.save()  # Save the user with the assigned role
         login(request, user)
         messages.success(request, 'Signup successful!')
-        return redirect('index')  # Redirect to the index or home page
-    return render(request, 'authentication/register.html')  # Render signup template
+        return redirect('index')  
+    return render(request, 'authentication/register.html')  
 
 
 def login_view(request):
